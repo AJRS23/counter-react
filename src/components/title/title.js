@@ -5,7 +5,7 @@ class Title extends Component {
     render() {
         console.log(this.props.count);
         return (
-            <h2 className="header__title">Contador: {this.props.count}</h2>
+            <h2 className="header__title">Counters: {this.props.count}</h2>
         )
     }
 }

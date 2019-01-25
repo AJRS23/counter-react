@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Title from './components/title/title'
 import CounterContainer from './components/counter-container/counter-container'
+import CounterForms from './components/counter-forms/counter-forms'
 import './App.css';
 import { connect } from 'react-redux';
 
@@ -12,8 +13,12 @@ class App extends Component {
   }
 
   handleSelected() {
-    this.props.onAddCounter();
+    console.log(this.props.countersLimit)
+    if (this.props.countersLimit > 0 && this.props.listCounters.length < this.props.countersLimit) {
+      this.props.onAddCounter();
+    }
   }
+
 
 
 
@@ -22,7 +27,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <CounterForms />
           <Title count={this.props.count} />
+
           <button className="App-button" onClick={() => { this.handleSelected() }}>Add counter</button>
         </header>
         <div>
@@ -37,7 +44,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     count: state.count,
-    listCounters: state.listCounters
+    listCounters: state.listCounters,
+    countersLimit: state.countersLimit
   };
 }
 

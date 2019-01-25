@@ -8,6 +8,7 @@ import * as ReactRedux from 'react-redux';
 
 
 const initialState = {
+    countersLimit: 0,
     listCounters: [],
     count: 0
 };
@@ -31,6 +32,15 @@ function reducer(state = initialState, action) {
                 listCounters: newCounters,
                 count: state.count - 1
             };
+        case 'ADD_LIMIT':
+            console.log("Entrooooo " + action.countersLimit)
+            return Object.assign(
+                {},
+                state, {
+                    countersLimit: action.countersLimit
+                }
+            )
+
 
         default:
             return state;
